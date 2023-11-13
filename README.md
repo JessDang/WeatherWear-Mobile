@@ -1,6 +1,6 @@
-# weatherwear
+# WeatherWear
 
-A new Flutter project.
+It's the WeatherWear app!
 
 ## Getting Started
 
