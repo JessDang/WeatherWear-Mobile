@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/greeting_section.dart';
 import '../widgets/weather_info.dart'; 
+import '../widgets/my_calendar.dart';
 
 // HomeScreen is the main screen of the app that users see upon opening the app.
 
@@ -33,6 +34,10 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: const WeatherInfoSection(), // The weather information part
             ),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                child: MyCalendar(), // add calendar
+              ),
           ],
         ),
       ),
