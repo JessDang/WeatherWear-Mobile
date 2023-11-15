@@ -8,7 +8,7 @@ class OutfitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 160, // Adjust the width as needed
+      width: 160,
       child: Card(
         margin: EdgeInsets.all(8),
         shape: RoundedRectangleBorder(
@@ -25,5 +25,6 @@ class OutfitCard extends StatelessWidget {
     );
   }
 }
+
 
 

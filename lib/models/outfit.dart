@@ -8,8 +8,8 @@ class Outfit {
 
 //fake dat 
 final List<Outfit> fakeOutfits = [
-  Outfit('assets/images/outfit1.jpg'),
-  Outfit('assets/images/outfit2.jpg'),
-  Outfit('assets/images/outfit3.jpg'),
+  Outfit('assets/images/outfit1.jpeg'),
+  Outfit('assets/images/outfit2.jpeg'),
+  Outfit('assets/images/outfit3.jpeg'),
  
 ];

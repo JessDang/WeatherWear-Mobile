@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: const GreetingSection(username: 'Aaron'), // geeting 
+                child: const GreetingSection(username: 'Aaron'), // greeting 
               ),
               const SizedBox(height: 16), // add some space 
               Padding(
@@ -35,18 +35,31 @@ class HomeScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: MyCalendar(), // canlender 
+                child: MyCalendar(), // calendar 
               ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              //   child: OutfitSuggestions(outfits: fakeOutfits), // suggustion about outfit 
-              // ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                child: OutfitSuggestions(outfits: fakeOutfits), // suggestion about outfit 
+              ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // bottom
+        onTap: (index) {
+          // Use the index to control the page view or navigation
+          switch (index) {
+            case 0:
+              // Navigate to the Weather page
+              break;
+            case 1:
+              // Open the Camera
+              break;
+            case 2:
+              // Navigate to the Closet Search page
+              break;
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.thermostat_outlined),
