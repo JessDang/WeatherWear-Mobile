@@ -2,18 +2,16 @@
 
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/camera_screen.dart';
 
 Future<void> main() async {
-		// Get access to the system camera via the plugin.
 	  WidgetsFlutterBinding.ensureInitialized();
-    final cameras = await availableCameras();
-		final firstCamera = cameras.first;
-
-		runApp(new MyApp());
+		runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
