@@ -1,10 +1,9 @@
-// home_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/greeting_section.dart';
 import '../widgets/weather_info.dart'; 
 import '../widgets/my_calendar.dart';
-
-// HomeScreen is the main screen of the app that users see upon opening the app.
+import '../widgets/outfit_suggestions.dart';
+import '../models/outfit.dart'; 
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,30 +19,35 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          //crossAxisAlignment: CrossAxisAlignment.center,// geeting part will be center smaller 
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: const GreetingSection(username: 'Aaron'), // The greeting part
-            ),
-            const SizedBox(height: 16), // Adds some vertical spacing
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: const WeatherInfoSection(), // The weather information part
-            ),
-            Padding(
+        child: SingleChildScrollView( // using  SingleChildScrollView including  Column
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: MyCalendar(), // add calendar
+                child: const GreetingSection(username: 'Aaron'), // geeting 
               ),
-          ],
+              const SizedBox(height: 16), // add some space 
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                child: const WeatherInfoSection(), // weather 
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                child: MyCalendar(), // canlender 
+              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              //   child: OutfitSuggestions(outfits: fakeOutfits), // suggustion about outfit 
+              // ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // Bottom navigation bar items
-        items: [
+        // bottom
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.thermostat_outlined),
             label: 'Weather',

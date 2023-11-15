@@ -65,7 +65,7 @@ class _MyCalendarState extends State<MyCalendar> {
             ),
             selectedTextStyle: TextStyle(color: Colors.white),
             todayDecoration: BoxDecoration(
-              color: Colors.purpleAccent,
+              color: const Color.fromARGB(255, 220, 169, 229),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(5.0),
             ),

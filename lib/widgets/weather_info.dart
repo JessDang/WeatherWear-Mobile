@@ -29,7 +29,7 @@ class WeatherInfoSection extends StatelessWidget {
                 ),
               ),
               Text(
-                '60°', // The temperature
+                '39°', // The temperature
                 style: TextStyle(
                   fontSize: 24, // The font size for temperature
                   fontWeight: FontWeight.bold, // Makes temperature text bold
@@ -39,7 +39,7 @@ class WeatherInfoSection extends StatelessWidget {
           ),
           // The date
           Text(
-            'Sep 11', // The date
+            'Nov 15', // The date
             style: TextStyle(
               fontWeight: FontWeight.bold, // Makes date text bold
             ),
