@@ -1,26 +1,60 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
-/// A widget that displays weather information using fake data.
-/// This is for demonstration purposes to simulate real functionality.
-class WeatherInfo extends StatelessWidget {
-  const WeatherInfo({Key? key}) : super(key: key);
+// A widget that displays weather information such as city, temperature, and date.
+class WeatherInfoSection extends StatelessWidget {
+  const WeatherInfoSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const String weatherCondition = 'Sunny';
-    const int temperatureCelsius = 25;
-
-    // Removed const from Container and Row as they contain a non-constant Text widget.
     return Container(
-      padding: const EdgeInsets.all(8.0),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.grey[300], // The background color of the container
+        borderRadius: BorderRadius.circular(25), // The border radius of the container
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Space out the child widgets equally
         children: [
-          Icon(Icons.wb_sunny, size: 32.0), // The Icon can be const.
-          SizedBox(width: 8.0), // The SizedBox can be const.
+          // City and temperature information
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start of the column
+            children: [
+              Text(
+                'Pittsburgh', // The name of the city
+                style: TextStyle(
+                  fontWeight: FontWeight.bold, // Makes text bold
+                ),
+              ),
+              Text(
+                '60°', // The temperature
+                style: TextStyle(
+                  fontSize: 24, // The font size for temperature
+                  fontWeight: FontWeight.bold, // Makes temperature text bold
+                ),
+              ),
+            ],
+          ),
+          // The date
           Text(
-            '$weatherCondition, $temperatureCelsius°C',
-            style: TextStyle(fontSize: 24.0), // The TextStyle can be const.
+            'Sep 11', // The date
+            style: TextStyle(
+              fontWeight: FontWeight.bold, // Makes date text bold
+            ),
+          ),
+          // Weather icons
+          Row(
+            children: [
+              Icon(Icons.wb_sunny), // Morning weather icon
+              SizedBox(width: 5), // Spacing between icons
+              Icon(Icons.wb_sunny), // Noon weather icon
+              SizedBox(width: 5), // Spacing between icons
+              Icon(Icons.wb_sunny), // Afternoon weather icon
+              SizedBox(width: 5), // Spacing between icons
+              Icon(Icons.nightlight_round), // Evening weather icon
+            ],
           ),
         ],
       ),
