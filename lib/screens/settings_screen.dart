@@ -1,0 +1,1 @@
+// The settings page, where users can adjust app preferences.

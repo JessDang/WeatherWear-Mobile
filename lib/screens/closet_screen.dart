@@ -1,0 +1,1 @@
+// The closet page, where users can manage and display categories of clothing.

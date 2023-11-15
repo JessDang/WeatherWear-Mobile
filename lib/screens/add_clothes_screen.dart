@@ -1,0 +1,1 @@
+// The page for adding new clothing items to the closet.

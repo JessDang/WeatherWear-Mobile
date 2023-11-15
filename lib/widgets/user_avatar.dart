@@ -1,0 +1,1 @@
+// A widget for displaying the user's avatar. not really need ?
