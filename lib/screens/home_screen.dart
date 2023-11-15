@@ -1,31 +1,41 @@
-// The home page, displaying today's outfit recommendations and weather.
-
 // home_screen.dart
 import 'package:flutter/material.dart';
-import '../widgets/category_section.dart';
 import '../widgets/weather_info.dart';
+import '../widgets/category_section.dart';
 
-/// The home screen of the application.
 class HomeScreen extends StatelessWidget {
-  // You can add parameters to the constructor if needed
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-            'WeatherWear'), // App title or user greeting could go here
+        title: Text('WeatherWear'), // text : weather wear 
       ),
-       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const WeatherInfo(), // This can stay const.
-            CategorySection(), // No const here if the constructor isn't const.
-          ],
-        ),
+      body: Column(
+        children: [
+          WeatherInfo(), // weather information
+          Expanded(
+            child: CategorySection(), // clothes part
+          ),
+        ],
       ),
-      // You can also add a BottomNavigationBar or FloatingActionButton if needed
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.thermostat_outlined), // tem
+            label: 'Weather',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera_alt), // camera
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search), // cloth
+            label: 'ClosetSearch',
+          ),
+        ],
+      ),
     );
   }
 }
