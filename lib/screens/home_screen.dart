@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/weather_info.dart';
 import '../widgets/category_section.dart';
+import '../widgets/greeting_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,15 +11,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WeatherWear'), // text : weather wear 
+        title: Text('WeatherWear'), // text 
+        elevation: 0, // moveout AppBar shadow
+        backgroundColor: Colors.transparent, // color 
       ),
-      body: Column(
-        children: [
-          WeatherInfo(), // weather information
-          Expanded(
-            child: CategorySection(), // clothes part
-          ),
-        ],
+       body: SafeArea( // using SafeArea, make sure the imformation will showup
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch, 
+          children: [
+            Center( // center
+              child: GreetingSection(username: 'Aaron'), // morning part
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
