@@ -4,6 +4,7 @@ import '../widgets/weather_info.dart';
 import '../widgets/my_calendar.dart';
 import '../widgets/outfit_suggestions.dart';
 import '../models/outfit.dart'; 
+import '../screens/closet_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -47,7 +48,6 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
-          // Use the index to control the page view or navigation
           switch (index) {
             case 0:
               // Navigate to the Weather page
@@ -56,7 +56,10 @@ class HomeScreen extends StatelessWidget {
               // Open the Camera
               break;
             case 2:
-              // Navigate to the Closet Search page
+              // Navigate to the Closet Screen
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => ClosetScreen(),
+              ));
               break;
           }
         },

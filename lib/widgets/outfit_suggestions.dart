@@ -12,7 +12,7 @@ class OutfitSuggestions extends StatelessWidget {
     return Container(
       height: 200,
       child: ListView.builder(
-        physics: BouncingScrollPhysics(), // 启用iOS风格的弹性滚动
+        physics: BouncingScrollPhysics(), // ios
         scrollDirection: Axis.horizontal,
         itemCount: outfits.length,
         itemBuilder: (context, index) {
