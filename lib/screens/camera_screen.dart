@@ -55,24 +55,30 @@ class CameraScreenState extends State<CameraScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-        body: FutureBuilder<void>(
-            future: _initializeControllerFuture,
-            builder: (context, snapshot) {
-              if (controller == null) {
-                return const Center(child: Icon(Icons.videocam_off));
-              } else if (snapshot.connectionState == ConnectionState.done) {
-                return ClipRect(
-                  clipper: _MediaSizeClipper(size),
-                  child: Transform.scale(
-                    scale: 1 / (controller.value.aspectRatio * size.aspectRatio),
-                    alignment: Alignment.topCenter,
-                    child: CameraPreview(controller),
-                  ),
-                );
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
-            }));
+      body: FutureBuilder<void>(
+          future: _initializeControllerFuture,
+          builder: (context, snapshot) {
+            if (controller == null) {
+              return const Center(child: Icon(Icons.videocam_off));
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return ClipRect(
+                clipper: _MediaSizeClipper(size),
+                child: Transform.scale(
+                  scale: 1 / (controller.value.aspectRatio * size.aspectRatio),
+                  alignment: Alignment.topCenter,
+                  child: CameraPreview(controller),
+                ),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+				onPressed: () async {},
+        child: const Icon(Icons.camera),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
   }
 }
 
