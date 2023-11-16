@@ -2,17 +2,27 @@
 
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'screens/camera_screen.dart';
 
-
-void main() => runApp(new MyApp());
+Future<void> main() async {
+	  WidgetsFlutterBinding.ensureInitialized();
+		final cameras = await availableCameras();
+		final firstCamera = cameras.firstOrNull;
+		runApp(MyApp(camera: firstCamera));
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+
+	final CameraDescription? camera;
+
+  const MyApp({super.key, required this.camera});
 
   // This widget is the root of your application.
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 58, 183, 98)),
         useMaterial3: true,
       ),
-      home: HomeScreen(), // Set HomeScreen as the main page of the app
+      home: CameraScreen(camera: camera), // Set HomeScreen as the main page of the app
     );
   }
 }
