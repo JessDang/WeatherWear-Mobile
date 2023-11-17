@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import '../widgets/greeting_section.dart';
 import '../widgets/weather_info.dart'; 
@@ -5,9 +6,12 @@ import '../widgets/my_calendar.dart';
 import '../widgets/outfit_suggestions.dart';
 import '../models/outfit.dart'; 
 import '../screens/closet_screen.dart';
+import '../screens/camera_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+	final CameraDescription? camera;
+
+  const HomeScreen({Key? key, required this.camera}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,9 @@ class HomeScreen extends StatelessWidget {
               break;
             case 1:
               // Open the Camera
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => CameraScreen(camera: camera),
+              ));
               break;
             case 2:
               // Navigate to the Closet Screen

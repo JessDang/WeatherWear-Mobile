@@ -7,7 +7,6 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/camera_screen.dart';
 
 Future<void> main() async {
 	  WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 58, 183, 98)),
         useMaterial3: true,
       ),
-      home: CameraScreen(camera: camera), // Set HomeScreen as the main page of the app
+      home: HomeScreen(camera: camera), // Set HomeScreen as the main page of the app
     );
   }
 }
