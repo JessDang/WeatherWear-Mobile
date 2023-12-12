@@ -67,6 +67,8 @@ class _RootViewState extends State<RootView> {
     return Scaffold(
       body: _children[_index],
 			bottomNavigationBar: BottomNavigationBar(
+				showUnselectedLabels: false,
+				showSelectedLabels: false,
 				onTap: (index) {
 					setState(() {
 						_index = index;
@@ -75,12 +77,15 @@ class _RootViewState extends State<RootView> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.thermostat_outlined),
+						label: "Home"
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.camera_alt),
+						label: "Camera"
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
+						label: "Closet"
           ),
         ],
 			),
