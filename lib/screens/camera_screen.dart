@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/tag_selector.dart';
+
 /// A widget that manages using the camera.
 class CameraScreen extends StatefulWidget {
   // Constructor requires item name, image URL, and category.
@@ -59,25 +61,56 @@ class CameraScreenState extends State<CameraScreen> {
           future: _initializeControllerFuture,
           builder: (context, snapshot) {
             if (controller == null) {
-              return const Center(child: Icon(Icons.videocam_off));
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 150.0, 0, 0),
+                    child: Center(child: Icon(Icons.videocam_off)),
+                  ),
+                  TagSelector(),
+                ],
+              );
             } else if (snapshot.connectionState == ConnectionState.done) {
-              return ClipRect(
-                clipper: _MediaSizeClipper(size),
-                child: Transform.scale(
-                  scale: 1 / (controller.value.aspectRatio * size.aspectRatio),
-                  alignment: Alignment.topCenter,
-                  child: CameraPreview(controller),
-                ),
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CameraPreviewWidget(controller: controller, size: size),
+                  TagSelector(),
+                ],
               );
             } else {
               return const Center(child: CircularProgressIndicator());
             }
           }),
       floatingActionButton: FloatingActionButton(
-				onPressed: () async {},
+        onPressed: () async {},
         child: const Icon(Icons.camera),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
+  }
+}
+
+class CameraPreviewWidget extends StatelessWidget {
+  final CameraController controller;
+  final Size size;
+
+  const CameraPreviewWidget(
+      {Key? key, required this.controller, required this.size})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRect(
+      clipper: _MediaSizeClipper(size),
+      child: Transform.scale(
+        scale: 1 / (controller.value.aspectRatio * size.aspectRatio),
+        alignment: Alignment.topCenter,
+        child: CameraPreview(controller),
+      ),
     );
   }
 }
