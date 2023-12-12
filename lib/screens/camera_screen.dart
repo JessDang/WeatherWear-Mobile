@@ -23,10 +23,12 @@ class CameraScreen extends StatefulWidget {
 class CameraScreenState extends State<CameraScreen> {
   late CameraController? _controller;
   late Future<void> _initializeControllerFuture;
+  String? _tag;
 
   @override
   void initState() {
     super.initState();
+    _tag = null;
 
     final camera = widget.camera;
 
@@ -66,10 +68,12 @@ class CameraScreenState extends State<CameraScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 150.0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(0, 500.0, 0, 0),
                     child: Center(child: Icon(Icons.videocam_off)),
                   ),
-                  TagSelector(),
+                  TagSelector(onTagSelected: (newTag) {
+                    _tag = newTag;
+                  }),
                 ],
               );
             } else if (snapshot.connectionState == ConnectionState.done) {
@@ -78,7 +82,9 @@ class CameraScreenState extends State<CameraScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CameraPreviewWidget(controller: controller, size: size),
-                  TagSelector(),
+                  TagSelector(onTagSelected: (newTag) {
+                    _tag = newTag;
+                  }),
                 ],
               );
             } else {
