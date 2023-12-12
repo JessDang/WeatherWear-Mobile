@@ -76,24 +76,6 @@ class _ClosetScreenState extends State<ClosetScreen> {
           );
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thermostat_outlined),
-            label: 'Weather',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'ClosetSearch',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
-    );
+		);
   }
 }

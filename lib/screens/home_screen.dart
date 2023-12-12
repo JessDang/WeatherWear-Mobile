@@ -9,9 +9,7 @@ import '../screens/closet_screen.dart';
 import '../screens/camera_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-	final CameraDescription? camera;
-
-  const HomeScreen({Key? key, required this.camera}) : super(key: key);
+  const HomeScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -49,41 +47,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              // Navigate to the Weather page
-              break;
-            case 1:
-              // Open the Camera
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => CameraScreen(camera: camera),
-              ));
-              break;
-            case 2:
-              // Navigate to the Closet Screen
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => ClosetScreen(),
-              ));
-              break;
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thermostat_outlined),
-            label: 'Weather',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'ClosetSearch',
-          ),
-        ],
       ),
     );
   }
