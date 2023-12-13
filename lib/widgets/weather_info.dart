@@ -1,59 +1,62 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 
-// A widget that displays weather information such as city, temperature, and date.
 class WeatherInfoSection extends StatelessWidget {
   const WeatherInfoSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.grey[300], // The background color of the container
-        borderRadius: BorderRadius.circular(25), // The border radius of the container
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(25),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Space out the child widgets equally
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // City and temperature information
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start of the column
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Pittsburgh', // The name of the city
-                style: TextStyle(
-                  fontWeight: FontWeight.bold, // Makes text bold
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Pittsburgh',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '39°',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
+              // The date
               Text(
-                '39°', // The temperature
+                'Nov 15',
                 style: TextStyle(
-                  fontSize: 24, // The font size for temperature
-                  fontWeight: FontWeight.bold, // Makes temperature text bold
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
-          // The date
-          Text(
-            'Nov 15', // The date
-            style: TextStyle(
-              fontWeight: FontWeight.bold, // Makes date text bold
-            ),
-          ),
-          // Weather icons
+          // Weather icons with improved spacing at the bottom
+          SizedBox(height: 10), // Adjusted spacing
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(Icons.wb_sunny), // Morning weather icon
-              SizedBox(width: 5), // Spacing between icons
-              Icon(Icons.wb_sunny), // Noon weather icon
-              SizedBox(width: 5), // Spacing between icons
-              Icon(Icons.wb_sunny), // Afternoon weather icon
-              SizedBox(width: 5), // Spacing between icons
-              Icon(Icons.nightlight_round), // Evening weather icon
+              Icon(Icons.wb_sunny, size: 20), // Morning weather icon
+              Icon(Icons.wb_sunny, size: 20), // Noon weather icon
+              Icon(Icons.wb_sunny, size: 20), // Afternoon weather icon
+              Icon(Icons.nightlight_round, size: 20), 
+              Icon(Icons.nightlight_round, size: 20), 
+              Icon(Icons.nightlight_round, size: 20), // Evening weather icon
             ],
           ),
         ],
