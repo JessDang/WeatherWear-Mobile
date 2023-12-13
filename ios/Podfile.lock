@@ -1,5 +1,4 @@
 PODS:
-<<<<<<< Updated upstream
   - camera_avfoundation (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -18,22 +17,10 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   camera_avfoundation:
     :path: ".symlinks/plugins/camera_avfoundation/ios"
-=======
-  - Flutter (1.0.0)
-  - image_picker_ios (0.0.1):
-    - Flutter
-
-DEPENDENCIES:
-  - Flutter (from `Flutter`)
-  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-
-EXTERNAL SOURCES:
->>>>>>> Stashed changes
   Flutter:
     :path: Flutter
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
-<<<<<<< Updated upstream
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
 
@@ -42,12 +29,6 @@ SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
-=======
-
-SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
->>>>>>> Stashed changes
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 

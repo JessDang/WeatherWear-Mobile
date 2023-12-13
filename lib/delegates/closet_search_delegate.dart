@@ -1,67 +1,87 @@
 // File path: lib/delegates/closet_search_delegate.dart
 import 'package:flutter/material.dart';
-import 'package:weatherwear/models/clothing.dart';
+import '../models/clothing.dart'; 
 
-// A search delegate class for searching category names
-class ClosetSearchDelegate extends SearchDelegate<String?> {
-  final List<String> categories;
+// The search delegate class for searching within all clothes
+class ClosetSearchDelegate extends SearchDelegate<Clothing?> {
+  final List<Clothing> allClothes;
 
-  ClosetSearchDelegate(List<Clothing> categories, {required this.categories});
+  // Constructor takes a list of all clothes
+  ClosetSearchDelegate(this.allClothes);
 
+  // Builds the results based on the current query
   @override
-  Widget buildSuggestions(BuildContext context) {
-    // Filter the categories based on the search query
-    final suggestions = query.isEmpty
-        ? categories
-        : categories.where((category) => category.toLowerCase().contains(query.toLowerCase())).toList();
+  Widget buildResults(BuildContext context) {
+    // Filter the list of all clothes based on the query
+    final results = allClothes.where((clothing) {
+      return clothing.name.toLowerCase().contains(query.toLowerCase());
+    }).toList();
 
-    // Build a list view of the suggestions
+    // Display the results in a list view
     return ListView.builder(
-      itemCount: suggestions.length,
+      itemCount: results.length,
       itemBuilder: (context, index) {
-        final category = suggestions[index];
+        final clothing = results[index];
         return ListTile(
-          title: Text(category),
+          title: Text(clothing.name),
+          leading: Image.asset(clothing.imageUrl), // Display the image of the clothing
+          subtitle: Text('${clothing.category} - ${clothing.size}'),
           onTap: () {
-            // Return the selected category
-            close(context, category);
+            close(context, clothing); // Close the search page and return the selected clothing
           },
         );
       },
     );
   }
 
+  // Builds the suggestions list which appears below the search bar as the user types
   @override
-  Widget buildResults(BuildContext context) {
-    // Typically, the results would be displayed here, but since we're handling it in suggestions,
-    // we'll call the buildSuggestions method.
-    return buildSuggestions(context);
+  Widget buildSuggestions(BuildContext context) {
+    // Filter the list of all clothes for suggestions based on the query
+    final suggestions = allClothes.where((clothing) {
+      return clothing.name.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+
+    // Display the suggestions in a list view
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final clothing = suggestions[index];
+        return ListTile(
+          title: Text(clothing.name),
+          leading: Image.asset(clothing.imageUrl), // Display the image of the clothing
+          subtitle: Text('${clothing.category} - ${clothing.size}'),
+          onTap: () {
+            query = clothing.name; // Set the search bar content to the selected clothing's name
+            showResults(context); // Display the buildResults view
+          },
+        );
+      },
+    );
   }
 
+  // Build actions for app bar - in this case, a clear button when there is a query
   @override
   List<Widget> buildActions(BuildContext context) {
-    // Actions for the AppBar. In this case, a clear button to clear the search query.
     return [
       if (query.isNotEmpty)
         IconButton(
-          icon: const Icon(Icons.clear),
+          icon: Icon(Icons.clear),
           onPressed: () {
-            // Clear the search query
-            query = '';
-            showSuggestions(context);
+            query = ''; // Clear the content of the search bar
+            showSuggestions(context); // Show the suggestion list
           },
         ),
     ];
   }
 
+  // Build leading widget - an icon button to close the search
   @override
   Widget buildLeading(BuildContext context) {
-    // A leading icon on the left of the AppBar.
     return IconButton(
-      icon: const Icon(Icons.arrow_back),
+      icon: Icon(Icons.arrow_back),
       onPressed: () {
-        // Close the search context and return null
-        close(context, null); // Here null is allowed because the delegate returns a nullable String
+        close(context, null); // The user did not select any item, return null safely
       },
     );
   }
