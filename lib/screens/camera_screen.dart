@@ -67,8 +67,33 @@ class CameraScreenState extends State<CameraScreen> {
               children: [
                 cameraView(controller, snapshot, size),
                 Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 80.0),
+                    padding: EdgeInsets.fromLTRB(0, 80.0, 0, 80.0), // Hacky way to deal with FAB and Safe Areas on iPhone.
                     child: Column(children: [
+                      Container(
+                        padding:
+                            EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white, // Box color
+                          borderRadius:
+                              BorderRadius.circular(10), // Rounded corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          'Item Added to Your Closet',
+                          style: TextStyle(
+                            color: Colors.black, // Text color
+                            fontSize: 16, 
+                          ),
+                        ),
+                      ),
                       Spacer(),
                       TagSelector(onTagSelected: (newTag) {
                         _tag = newTag;
