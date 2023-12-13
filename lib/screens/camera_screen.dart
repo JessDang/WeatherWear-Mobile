@@ -59,6 +59,7 @@ class CameraScreenState extends State<CameraScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+			backgroundColor: Colors.black,
       body: FutureBuilder<void>(
           future: _initializeControllerFuture,
           builder: (context, snapshot) {
@@ -67,7 +68,9 @@ class CameraScreenState extends State<CameraScreen> {
               children: [
                 cameraView(controller, snapshot, size),
                 Padding(
-                    padding: EdgeInsets.fromLTRB(0, 80.0, 0, 80.0), // Hacky way to deal with FAB and Safe Areas on iPhone.
+									 // Hacky way to deal with FAB and Safe Areas on iPhone.
+									 // This at least looks decent on an iPhone 11.
+                    padding: EdgeInsets.fromLTRB(0, 60.0, 0, 80.0),
                     child: Column(children: [
                       Container(
                         padding:

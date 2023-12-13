@@ -55,7 +55,9 @@ class _RootViewState extends State<RootView> {
     CameraScreen(camera: null),
     ClosetScreen()
   ];
+	
 
+	// Bootstrap the camera into the state once we have it.
 	@override
 	void initState() {
 		super.initState();
@@ -69,6 +71,7 @@ class _RootViewState extends State<RootView> {
 			bottomNavigationBar: BottomNavigationBar(
 				showUnselectedLabels: false,
 				showSelectedLabels: false,
+				currentIndex: _index,
 				onTap: (index) {
 					setState(() {
 						_index = index;
