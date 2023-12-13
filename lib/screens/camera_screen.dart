@@ -62,34 +62,20 @@ class CameraScreenState extends State<CameraScreen> {
       body: FutureBuilder<void>(
           future: _initializeControllerFuture,
           builder: (context, snapshot) {
-            if (controller == null) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 500.0, 0, 0),
-                    child: Center(child: Icon(Icons.videocam_off)),
-                  ),
-                  TagSelector(onTagSelected: (newTag) {
-                    _tag = newTag;
-                  }),
-                ],
-              );
-            } else if (snapshot.connectionState == ConnectionState.done) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CameraPreviewWidget(controller: controller, size: size),
-                  TagSelector(onTagSelected: (newTag) {
-                    _tag = newTag;
-                  }),
-                ],
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                cameraView(controller, snapshot, size),
+                Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 60.0),
+                    child: Column(children: [
+                      Spacer(),
+                      TagSelector(onTagSelected: (newTag) {
+                        _tag = newTag;
+                      }),
+                    ]))
+              ],
+            );
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {},
@@ -97,6 +83,22 @@ class CameraScreenState extends State<CameraScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+}
+
+// Helper method to deal with camera loading, or the fact that there may not be a
+// camera on a simulator.
+Widget cameraView<T>(
+    CameraController? controller, AsyncSnapshot<T> snapshot, Size size) {
+  if (controller == null) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 0.0, 0, 0),
+      child: Center(child: Icon(Icons.videocam_off)),
+    );
+  } else if (snapshot.connectionState == ConnectionState.done) {
+    return CameraPreviewWidget(controller: controller, size: size);
+  } else {
+    return const Center(child: CircularProgressIndicator());
   }
 }
 
