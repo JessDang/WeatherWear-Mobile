@@ -67,7 +67,7 @@ class CameraScreenState extends State<CameraScreen> {
               children: [
                 cameraView(controller, snapshot, size),
                 Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 60.0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 80.0),
                     child: Column(children: [
                       Spacer(),
                       TagSelector(onTagSelected: (newTag) {
