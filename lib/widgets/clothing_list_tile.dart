@@ -10,7 +10,7 @@ class ClothingListTile extends StatelessWidget {
   const ClothingListTile({
     Key? key,
     required this.category,
-    required this.clothes,
+    required this.clothes, required Null Function() onTap,
   }) : super(key: key);
 
   @override
