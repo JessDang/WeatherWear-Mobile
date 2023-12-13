@@ -12,16 +12,12 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   table_calendar: ^3.0.9
-<<<<<<< Updated upstream
   camera: ^0.10.5+5
   path_provider: ^2.1.1
   path: ^1.8.3
   image_picker: ^1.0.5
-=======
-  image_picker: ^1.0.4
-
->>>>>>> Stashed changes
-
+  share_plus: ^3.0.4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

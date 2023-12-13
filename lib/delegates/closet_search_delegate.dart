@@ -2,29 +2,31 @@
 import 'package:flutter/material.dart';
 import 'package:weatherwear/models/clothing.dart';
 
-// A search delegate class for searching category names
+// A search delegate class for searching through the clothing categories
 class ClosetSearchDelegate extends SearchDelegate<String?> {
-  final List<String> categories;
+  final List<String> categoryNames;
 
-  ClosetSearchDelegate(List<Clothing> categories, {required this.categories});
+  ClosetSearchDelegate(List<Clothing> clothes, {required List categories})
+      : categoryNames = clothes.map((clothing) => clothing.name).toList(),
+        super();
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // Filter the categories based on the search query
+    // Filter the category names based on the search query
     final suggestions = query.isEmpty
-        ? categories
-        : categories.where((category) => category.toLowerCase().contains(query.toLowerCase())).toList();
+        ? categoryNames
+        : categoryNames.where((name) => name.toLowerCase().contains(query.toLowerCase())).toList();
 
     // Build a list view of the suggestions
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (context, index) {
-        final category = suggestions[index];
+        final suggestion = suggestions[index];
         return ListTile(
-          title: Text(category),
+          title: Text(suggestion),
           onTap: () {
-            // Return the selected category
-            close(context, category);
+            // Return the selected category name
+            close(context, suggestion);
           },
         );
       },
@@ -66,4 +68,3 @@ class ClosetSearchDelegate extends SearchDelegate<String?> {
     );
   }
 }
-

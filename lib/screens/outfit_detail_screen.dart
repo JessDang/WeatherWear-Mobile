@@ -1,1 +1,0 @@
-// The outfit detail page, showing the specifics of an outfit.
