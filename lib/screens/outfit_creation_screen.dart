@@ -7,11 +7,12 @@ class OutfitCreationScreen extends StatefulWidget {
 }
 
 class _OutfitCreationScreenState extends State<OutfitCreationScreen> {
-  final String _topImage = 'assets/images/outfit1.jpeg'; // top file fake data
-  final String _bottomImage = 'assets/images/outfit2.jpeg'; // bottom file
+  final String _topImage = 'assets/images/boy1.jpeg'; // fake data 1
+  final String _middleImage = 'assets/images/boy3.jpeg'; // fake data 2
+  final String _bottomImage = 'assets/images/boy2.jpeg'; // fake data 3
 
   void _shareOutfit() {
-    final String outfitDetails = "Check out my new outfit!"; // share information
+    final String outfitDetails = "Check out my new outfit!"; // share outfit
     Share.share(outfitDetails);
   }
 
@@ -20,30 +21,26 @@ class _OutfitCreationScreenState extends State<OutfitCreationScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Share Your Outfit'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.share),
-            onPressed: _shareOutfit,
-          ),
+      ),
+      body: ListView( // using list view
+        children: [
+          Image.asset(_topImage, fit: BoxFit.cover),
+          Image.asset(_middleImage, fit: BoxFit.cover),
+          Image.asset(_bottomImage, fit: BoxFit.cover),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.asset(_topImage, height: 150, fit: BoxFit.cover),
-            Image.asset(_bottomImage, height: 150, fit: BoxFit.cover),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: ElevatedButton(
-                onPressed: _shareOutfit,
-                child: Text('Share this outfit'),
-              ),
-            ),
-          ],
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _shareOutfit,
+        child: Icon(Icons.share),
+        backgroundColor: Colors.green,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 6.0,
+        child: Container(height: 50.0),
+      ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 }
-

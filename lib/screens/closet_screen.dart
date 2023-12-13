@@ -4,7 +4,7 @@ import '../widgets/clothing_list_tile.dart';
 import '../delegates/closet_search_delegate.dart';
 import 'add_clothes_screen.dart';
 import 'outfit_creation_screen.dart';
-import 'category_detail_screen.dart'; // Ensure you have this screen for showing category details
+import 'category_detail_screen.dart'; 
 
 class ClosetScreen extends StatefulWidget {
   ClosetScreen({Key? key}) : super(key: key);
