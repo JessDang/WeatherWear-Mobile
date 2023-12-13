@@ -1,4 +1,6 @@
 // The data model for clothing items
+import 'package:flutter/src/painting/image_resolution.dart';
+
 class Clothing {
   final String id; 
   final String name; 
@@ -13,8 +15,12 @@ class Clothing {
     required this.category,
     required this.size,
     required this.color,
-    required this.imageUrl,
+    required this.imageUrl, required String label, required AssetImage image,
   });
+
+  get image => null;
+
+  Null get label => null;
 }
 
 // // fake data

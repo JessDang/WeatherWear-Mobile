@@ -39,7 +39,7 @@ class WeatherInfoSection extends StatelessWidget {
               ),
               // The date
               Text(
-                'Nov 15',
+                'Dec 13',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),

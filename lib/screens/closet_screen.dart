@@ -55,7 +55,7 @@ class _ClosetScreenState extends State<ClosetScreen> {
             onPressed: _navigateToAddClothesScreen,
           ),
           IconButton(
-            icon: const Icon(Icons.share, color: Colors.black),
+            icon: const Icon(Icons.favorite, color: Colors.black),
             onPressed: _navigateToOutfitCreationScreen,
           ),
         ],
