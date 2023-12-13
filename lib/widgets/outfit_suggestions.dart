@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'outfit_card.dart'; 
-import '../models/outfit.dart'; 
+import 'outfit_card.dart'; // This import path assumes that outfit_card.dart is in the same directory as OutfitSuggestions
+import '../models/outfit.dart'; // Adjust the import path as necessary
 
 class OutfitSuggestions extends StatelessWidget {
   final List<Outfit> outfits;
