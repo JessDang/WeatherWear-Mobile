@@ -1,47 +1,49 @@
-// File path: lib/screens/category_detail_screen.dart
+// lib/screens/category_detail_screen.dart
 import 'package:flutter/material.dart';
-import '../models/clothing.dart';
+import 'package:weatherwear/models/clothing.dart';
+import 'dart:io';
+import '../data/global_clothing_data.dart'; 
 
-class CategoryDetailScreen extends StatelessWidget {
+class CategoryDetailScreen extends StatefulWidget {
   final String category;
-  final List<Clothing> clothes;
 
-  // Constructor with required fields for category and list of clothes
-  const CategoryDetailScreen({
-    Key? key,
-    required this.category,
-    required this.clothes,
-  }) : super(key: key);
+  const CategoryDetailScreen({Key? key, required this.category, required List<Clothing> clothes}) : super(key: key);
 
   @override
+  _CategoryDetailScreenState createState() => _CategoryDetailScreenState();
+}
+
+class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
+  @override
   Widget build(BuildContext context) {
-    // Use SafeArea to avoid content being hidden by notches or bottom navigation
+    final globalData = GlobalClothingData(); 
+    final clothes = globalData.getClothesForCategory(widget.category);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(category), // Display the current category
+        title: Text(widget.category),
       ),
       body: SafeArea(
         child: GridView.builder(
           padding: const EdgeInsets.all(8),
-          // SliverGridDelegateWithFixedCrossAxisCount is used to create a fixed number of columns in the grid
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Two items per row
-            crossAxisSpacing: 10, // Horizontal spacing between items
-            mainAxisSpacing: 10, // Vertical spacing between items
-            childAspectRatio: 0.8, // Aspect ratio for the children
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.8,
           ),
-          itemCount: clothes.length, // Number of clothing items
+          itemCount: clothes.length,
           itemBuilder: (context, index) {
-            final clothing = clothes[index];
+            final clothingItem = clothes[index];
             return GridTile(
-              child: Image.asset(clothing.imageUrl, fit: BoxFit.cover), // Clothing image
+              child: Image.file(clothingItem.image, fit: BoxFit.cover),
               footer: GridTileBar(
                 backgroundColor: Colors.black45,
                 title: Text(
-                  clothing.name,
-                  style: TextStyle(fontSize: 12), // You can adjust the style as needed
+                  clothingItem.label,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12),
                 ),
-                // Here you can add more information or buttons, like a favorite button
               ),
             );
           },
@@ -50,3 +52,5 @@ class CategoryDetailScreen extends StatelessWidget {
     );
   }
 }
+
+

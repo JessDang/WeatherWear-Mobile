@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/clothing.dart';
 import '../widgets/clothing_list_tile.dart';
 import '../delegates/closet_search_delegate.dart';
-
-// import '../screens/home_screen.dart'; // Import this if you're navigating to the home screen.
+// import 'package:image_picker/image_picker.dart';
+import 'add_clothes_screen.dart';
 
 class ClosetScreen extends StatefulWidget {
   ClosetScreen({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class ClosetScreen extends StatefulWidget {
 }
 
 class _ClosetScreenState extends State<ClosetScreen> {
-  int _selectedIndex = 2; // Set to the index corresponding to the ClosetScreen
+  int _selectedIndex = 2; 
 
   void _onItemTapped(int index) {
     if (_selectedIndex != index) {
@@ -22,14 +22,14 @@ class _ClosetScreenState extends State<ClosetScreen> {
       });
       switch (index) {
         case 0:
-          // When the "Weather" button is tapped, navigate back to the HomeScreen
+          // to main 
           Navigator.popUntil(context, (route) => route.isFirst);
           break;
         case 1:
-          // Handle navigation to the Camera Screen if needed
+          // to camera
           break;
         case 2:
-          // Already on the ClosetScreen, no navigation action needed
+          // don't need in this page
           break;
         default:
           break;
@@ -37,30 +37,38 @@ class _ClosetScreenState extends State<ClosetScreen> {
     }
   }
 
+  void _navigateToAddClothesScreen() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => AddClothesScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Dummy list of Clothing items for each category
     final Map<String, List<Clothing>> categories = {
-      // You need to fill in your actual data here
       'Outfits': [],
       'Tops': [],
       'Bottoms': [],
       'Shoes': [],
       'Accessories': [],
-      // Add other categories as needed
+      // add more list 
     };
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Closet'),
-        automaticallyImplyLeading: false, // Do not show the back button
+        automaticallyImplyLeading: false, // not show back
         actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _navigateToAddClothesScreen, // jump to add clothese screen
+          ),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: ClosetSearchDelegate([]), // Pass your clothing data here
+                delegate: ClosetSearchDelegate([]), // send clothes data
               );
             },
           ),
@@ -76,6 +84,6 @@ class _ClosetScreenState extends State<ClosetScreen> {
           );
         },
       ),
-		);
+    );
   }
 }

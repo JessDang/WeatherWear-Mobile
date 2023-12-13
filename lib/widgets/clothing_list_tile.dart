@@ -1,7 +1,7 @@
 // lib/widgets/clothing_list_tile.dart
 import 'package:flutter/material.dart';
 import '../models/clothing.dart';
-import '../screens/category_detail_screen.dart'; // 确保导入了CategoryDetailScreen
+import '../screens/category_detail_screen.dart'; 
 
 class ClothingListTile extends StatelessWidget {
   final String category;
@@ -35,7 +35,7 @@ class ClothingListTile extends StatelessWidget {
       ),
       trailing: const Icon(Icons.chevron_right),
       onTap: () {
-        // 导航到CategoryDetailScreen，并传递当前类别和衣物列表
+        // show clothes list
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => CategoryDetailScreen(

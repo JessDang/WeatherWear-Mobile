@@ -45,6 +45,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses the camera to capture photos and videos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo gallery to let you pick images to add to your wardrobe.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses the microphone when capturing video.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
