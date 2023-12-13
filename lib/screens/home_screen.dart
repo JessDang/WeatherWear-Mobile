@@ -14,7 +14,10 @@ class HomeScreen extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
-    const horizontalPadding = 16.0;
+    // same vertical sapcing
+    const double verticalSpacing = 16.0;
+    // same horizontal spacing
+    const double horizontalPadding = 16.0;
 
     // fake data
     final String verticalImagePath = 'assets/images/cj.jpeg';
@@ -41,12 +44,13 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                // - 
+                padding: EdgeInsets.fromLTRB(horizontalPadding, verticalSpacing, horizontalPadding, verticalSpacing / 2),
                 child: const GreetingSection(username: 'Aaron'),
               ),
-              const SizedBox(height: 16),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                // keep
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalSpacing / 2),
                 child: const WeatherInfoSection(),
               ),
               // Padding(
