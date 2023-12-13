@@ -24,6 +24,10 @@ class HomeScreen extends StatelessWidget {
       'assets/images/boot.jpeg',
     ];
 
+    // calculate the high on right one 
+    final double rightImagesHeight = squareImagePaths.length * 100.0 + (squareImagePaths.length - 1) * 10.0;
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather Wear'),
@@ -54,13 +58,14 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start, 
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // left
                     Expanded(
                       flex: 2,
                       child: Container(
-                        height: 300, 
-                        margin: EdgeInsets.only(right: 10), 
+                        height: rightImagesHeight, // high
+                        margin: EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           image: DecorationImage(
@@ -74,17 +79,19 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Column(
-                        children: squareImagePaths.map((path) => Container(
-                          height: 100, 
-                          margin: EdgeInsets.only(bottom: 10), 
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              image: AssetImage(path),
-                              fit: BoxFit.cover,
+                        children: squareImagePaths.map((path) {
+                          return Container(
+                            height: 100, // high
+                            margin: EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              image: DecorationImage(
+                                image: AssetImage(path),
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                        )).toList(),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ],
